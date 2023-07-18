@@ -28,3 +28,81 @@ closeBtn.addEventListener("click", closeModal);
 function closeModal() {
     modalbg.style.display = "none";
 };
+
+
+
+// est appelé avec le onsubmit 
+function validate() {
+    // Vérification du prénom
+    var firstName = document.querySelector('input[name="first"]').value;
+    if (firstName === "" || firstName.length < 2) {
+        document.getElementById("first-error-message").innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du prénom";
+        return false;
+    } else {
+        document.getElementById("first-error-message").innerHTML = "";
+    };
+
+    // Vérification du nom
+    var lastName = document.querySelector('input[name="last"]').value;
+    if (lastName === "" || lastName.length < 2) {
+        document.getElementById("last-error-message").innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
+        return false;
+    } else {
+        document.getElementById("last-error-message").innerHTML = "";
+    };
+
+    // Vérification de l'e-mail
+    var email = document.querySelector('input[name="email"]').value;
+    const emailRegex = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+");
+
+    if (email === "" || !emailRegex.test(email)) {
+        document.getElementById("email-error-message").innerHTML = "Veuillez entrer un email valide.";
+        return false;
+    } else {
+        document.getElementById("email-error-message").innerHTML = "";
+    }
+
+
+    // Vérification de la date de naissance
+    var birthdate = document.querySelector('input[name="birthdate"]').value;
+    if (isNaN(Date.parse(birthdate))) {
+        document.getElementById("birthdate-error-message").innerHTML = "Vous devez entrer votre date de naissance.";
+        return false;
+    } else {
+        document.getElementById("birthdate-error-message").innerHTML = "";
+    };
+
+    // Vérification du nombre de tournois GameOn déjà participés
+    var quantity = document.querySelector('input[name="quantity"]').value;
+    const numberRegex = /^\d+$/;
+    if (quantity === "" || !numberRegex.test(quantity)) {
+        document.getElementById("quantity-error-message").innerHTML = "Vous devez saisir une valeur numérique.";
+        return false;
+    } else {
+        document.getElementById("quantity-error-message").innerHTML = "";
+
+    };
+
+
+
+    // Vérification de la sélection d'un tournoi
+    var selectedLocation = document.querySelector('input[name="location"]:checked');
+    if (!selectedLocation) {
+        document.getElementById("location-error-message").innerHTML = "Vous devez choisir une option.";
+        return false;
+    } else {
+        document.getElementById("location-error-message").innerHTML = "";
+    }
+
+    // Vérification de l'acceptation des conditions d'utilisation
+    var termsAccepted = document.getElementById("checkbox1").checked;
+    if (!termsAccepted) {
+        document.getElementById("conditions-error-message").innerHTML = "Vous devez vérifier que vous acceptez les termes et conditions.";
+        return false;
+    } else {
+        document.getElementById("conditions-error-message").innerHTML = "";
+    }
+
+    // Le formulaire est valide
+
+}
