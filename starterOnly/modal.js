@@ -1,5 +1,5 @@
 function editNav() {
-    var x = document.getElementById("myTopnav");
+    let x = document.getElementById("myTopnav");
     if (x.className === "topnav") {
         x.className += " responsive";
     } else {
@@ -34,7 +34,8 @@ function closeModal() {
 // est appelé avec le onsubmit 
 function validate() {
     // Vérification du prénom
-    var firstName = document.querySelector('input[name="first"]').value;
+    let firstName = document.querySelector('input[name="first"]').value;
+
     if (firstName === "" || firstName.length < 2) {
         document.getElementById("first-error-message").innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du prénom";
         return false;
@@ -43,7 +44,7 @@ function validate() {
     };
 
     // Vérification du nom
-    var lastName = document.querySelector('input[name="last"]').value;
+    let lastName = document.querySelector('input[name="last"]').value;
     if (lastName === "" || lastName.length < 2) {
         document.getElementById("last-error-message").innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
         return false;
@@ -52,7 +53,7 @@ function validate() {
     };
 
     // Vérification de l'e-mail
-    var email = document.querySelector('input[name="email"]').value;
+    let email = document.querySelector('input[name="email"]').value;
     const emailRegex = new RegExp("[a-z0-9._-]+@[a-z0-9._-]+\\.[a-z0-9._-]+");
 
     if (email === "" || !emailRegex.test(email)) {
@@ -64,7 +65,7 @@ function validate() {
 
 
     // Vérification de la date de naissance
-    var birthdate = document.querySelector('input[name="birthdate"]').value;
+    let birthdate = document.querySelector('input[name="birthdate"]').value;
     if (isNaN(Date.parse(birthdate))) {
         document.getElementById("birthdate-error-message").innerHTML = "Vous devez entrer votre date de naissance.";
         return false;
@@ -73,7 +74,7 @@ function validate() {
     };
 
     // Vérification du nombre de tournois GameOn déjà participés
-    var quantity = document.querySelector('input[name="quantity"]').value;
+    let quantity = document.querySelector('input[name="quantity"]').value;
     const numberRegex = /^\d+$/;
     if (quantity === "" || !numberRegex.test(quantity)) {
         document.getElementById("quantity-error-message").innerHTML = "Vous devez saisir une valeur numérique.";
@@ -86,7 +87,7 @@ function validate() {
 
 
     // Vérification de la sélection d'un tournoi
-    var selectedLocation = document.querySelector('input[name="location"]:checked');
+    let selectedLocation = document.querySelector('input[name="location"]:checked');
     if (!selectedLocation) {
         document.getElementById("location-error-message").innerHTML = "Vous devez choisir une option.";
         return false;
@@ -95,7 +96,7 @@ function validate() {
     }
 
     // Vérification de l'acceptation des conditions d'utilisation
-    var termsAccepted = document.getElementById("checkbox1").checked;
+    let termsAccepted = document.getElementById("checkbox1").checked;
     if (!termsAccepted) {
         document.getElementById("conditions-error-message").innerHTML = "Vous devez vérifier que vous acceptez les termes et conditions.";
         return false;
@@ -105,4 +106,4 @@ function validate() {
 
     // Le formulaire est valide
 
-}
+};
