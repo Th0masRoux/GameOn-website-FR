@@ -53,45 +53,46 @@
             <div class="content">
                 <span class="close"></span>
                 <div class="modal-body">
-                    <form name="reserve" id="reserve" action="index.html" method="get" onsubmit="return validate();">
+                    <form name="reserve" id="reserve" action="index.html" method="get">
                         <!--1/ PRENOM-->
                         <div class="formData">
                             <label for="first">Prénom</label><br>
-                            <input class="text-control" type="text" id="first" name="first" minlength="2" /><br>
-                            <span class="error-message" id="first-error-message"></span><br>
+                            <input class="text-control" type="text" id="first" name="first" />
+                            <span class="error-message" id="first-error-message"></span>
+
                         </div>
                         <!--2/ NOM-->
                         <div class="formData">
                             <label for="last">Nom</label><br>
-                            <input class="text-control" type="text" id="last" name="last" minlength="2" /><br>
-                            <span class="error-message" id="last-error-message"></span><br>
+                            <input class="text-control" type="text" id="last" name="last" />
+                            <span class="error-message" id="last-error-message"></span>
                         </div>
                         <!--3/ EMAIL-->
                         <div class="formData">
                             <label for="email">E-mail</label><br>
-                            <input class="text-control" type="email" id="email" name="email" /><br>
-                            <span class="error-message" id="email-error-message"></span><br>
+                            <input class="text-control" type="texte" id="email" name="email" />
+                            <span class="error-message" id="email-error-message"></span>
                         </div>
 
                         <!--4/ DATE NAISSANCE-->
                         <div class="formData">
                             <label for="birthdate">Date de naissance</label><br>
-                            <input class="text-control" type="date" id="birthdate" name="birthdate" /><br>
-                            <span class="error-message" id="birthdate-error-message"></span><br>
+                            <input class="text-control" type="date" id="birthdate" name="birthdate" />
+                            <span class="error-message" id="birthdate-error-message"></span>
 
                         </div>
 
                         <!--5/ NOMBRE DE TOURNOIS-->
                         <div class="formData">
-                            <label class="quantity" for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label><br>
-                            <input type="number" class="text-control" id="quantity" name="quantity" min="0" max="99">
-                            <span class="error-message" id="quantity-error-message"></span><br>
+                            <label class="quantity" for="quantity">À combien de tournois GameOn avez-vous déjà participé ?</label>
+                            <input type="text" class="text-control" id="quantity" name="quantity" min="0" max="99">
+                            <span class="error-message" id="quantity-error-message"></span>
 
                         </div>
 
                         <!--6/ VILLE CHOISIE-->
-                        <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
                         <div class="formData">
+                            <p class="text-label">A quel tournoi souhaitez-vous participer cette année ?</p>
                             <input class="checkbox-input" type="radio" id="location1" name="location" value="New York" />
                             <label class="checkbox-label" for="location1">
                         <span class="checkbox-icon"></span>
@@ -116,7 +117,7 @@
                             <label class="checkbox-label" for="location6">
                         <span class="checkbox-icon"></span>
                         Portland</label>
-                            <span class="error-message" id="location-error-message"></span><br>
+                            <span class="error-message" id="location-error-message"></span>
                         </div>
                         <!--7/ CONDITIONS-->
                         <div class="formData">
@@ -125,8 +126,8 @@
                         <span class="checkbox-icon"></span>
                         J'ai lu et accepté les conditions d'utilisation.
                       </label>
-                            <br>
-                            <span class="error-message" id="conditions-error-message"></span><br>
+
+                            <span class="error-message" id="conditions-error-message"></span>
                             <!--8/ ETRE PREVENU-->
                             <input class="checkbox-input" type="checkbox" id="checkbox2" />
                             <label class="checkbox2-label" for="checkbox2">
@@ -136,7 +137,7 @@
                             <br>
                         </div>
                         <!--9/ BOUTON-->
-                        <input class="btn-submit" type="submit" value="C'est parti" />
+                        <input class="btn-submit" type="submit" id="btn-submit" value="C'est parti" />
 
                     </form>
                 </div>

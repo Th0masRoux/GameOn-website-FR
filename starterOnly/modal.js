@@ -31,25 +31,32 @@ function closeModal() {
 
 
 
-// est appelé avec le onsubmit 
+
+// est appelé avec le  submit 
 function validate() {
+
     // Vérification du prénom
     let firstName = document.querySelector('input[name="first"]').value;
 
     if (firstName === "" || firstName.length < 2) {
         document.getElementById("first-error-message").innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du prénom";
+        document.getElementById('first').classList.add('input-erreur');
+
         return false;
     } else {
         document.getElementById("first-error-message").innerHTML = "";
+        document.getElementById('first').classList.remove('input-erreur');
     };
 
     // Vérification du nom
     let lastName = document.querySelector('input[name="last"]').value;
     if (lastName === "" || lastName.length < 2) {
         document.getElementById("last-error-message").innerHTML = "Veuillez entrer 2 caractères ou plus pour le champ du nom.";
+        document.getElementById('last').classList.add('input-erreur');
         return false;
     } else {
         document.getElementById("last-error-message").innerHTML = "";
+        document.getElementById('last').classList.remove('input-erreur');
     };
 
     // Vérification de l'e-mail
@@ -58,9 +65,11 @@ function validate() {
 
     if (email === "" || !emailRegex.test(email)) {
         document.getElementById("email-error-message").innerHTML = "Veuillez entrer un email valide.";
+        document.getElementById('email').classList.add('input-erreur');
         return false;
     } else {
         document.getElementById("email-error-message").innerHTML = "";
+        document.getElementById('email').classList.remove('input-erreur');
     }
 
 
@@ -68,9 +77,11 @@ function validate() {
     let birthdate = document.querySelector('input[name="birthdate"]').value;
     if (isNaN(Date.parse(birthdate))) {
         document.getElementById("birthdate-error-message").innerHTML = "Vous devez entrer votre date de naissance.";
+        document.getElementById('birthdate').classList.add('input-erreur');
         return false;
     } else {
         document.getElementById("birthdate-error-message").innerHTML = "";
+        document.getElementById('birthdate').classList.remove('input-erreur');
     };
 
     // Vérification du nombre de tournois GameOn déjà participés
@@ -78,10 +89,11 @@ function validate() {
     const numberRegex = /^\d+$/;
     if (quantity === "" || !numberRegex.test(quantity)) {
         document.getElementById("quantity-error-message").innerHTML = "Vous devez saisir une valeur numérique.";
+        document.getElementById('quantity').classList.add('input-erreur');
         return false;
     } else {
         document.getElementById("quantity-error-message").innerHTML = "";
-
+        document.getElementById('quantity').classList.remove('input-erreur');
     };
 
 
@@ -105,5 +117,64 @@ function validate() {
     }
 
     // Le formulaire est valide
+    return true;
+};
+//event listener
+// on rrécupère le formulaire
+let form = document.getElementById("reserve");
+let submitBtn = document.querySelector(".btn-submit");
+// on y ajoute un event submit
+form.addEventListener("submit", (event) => {
+    // on change le comportement par défaut qui raffraichie la page 
+    event.preventDefault();
+    // on execute la fonction validate 
+    if (validate() === true) {
 
+
+        formData.forEach((element) => (element.style.display = "none"));
+        submitBtn.style.display = "none";
+        showMsgConfirmation()
+    }
+
+});
+// fonction qui vient modifier me DOM en créant et affichant un message de confirmation
+// et un bouton de fermeture de la modale
+function showMsgConfirmation() {
+    let validationMessage = document.createElement("p");
+    validationMessage.className = "confirmation";
+    validationMessage.innerHTML = "Merci pour votre inscription.";
+
+    let closeBtn = document.createElement("input");
+    closeBtn.className = "btn-submit";
+    closeBtn.value = "Fermer";
+
+    let confirmationWrapper = document.createElement("div");
+    confirmationWrapper.className = "modal-confirmation";
+    confirmationWrapper.appendChild(validationMessage);
+    confirmationWrapper.appendChild(closeBtn);
+
+    let modalbody = document.getElementsByClassName("modal-body");
+    modalbody[0].appendChild(confirmationWrapper);
+
+    // écouteur d'événement qui vient fermer la modale et appeler les fonctions
+    // "displayForm" et "resetForm" au clic
+    closeBtn.addEventListener("click", () => {
+        const modalbg = document.querySelector(".bground");
+        modalbg.style.display = "none";
+        displayForm();
+        resetForm();
+    });
+}
+
+// remet à zero le contenu du formulaire
+function resetForm() {
+    const form = document.querySelector("form[name='reserve']");
+    form.reset();
+}
+
+// fonction qui vient réafficher tous les inputs
+// ainsi que le bouton submit du formulaire
+function displayForm() {
+    formData.forEach((element) => (element.style.display = "block"));
+    submitBtn.style.display = "block";
 };
