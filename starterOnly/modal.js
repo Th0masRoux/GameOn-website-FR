@@ -131,8 +131,11 @@ form.addEventListener("submit", (event) => {
     if (validate() === true) {
 
 
+        // pour chaque input du formulaire on les passent en display non
         formData.forEach((element) => (element.style.display = "none"));
+        // pareil pour le bouton
         submitBtn.style.display = "none";
+        // on affiche le message de confirmation
         showMsgConfirmation()
     }
 
